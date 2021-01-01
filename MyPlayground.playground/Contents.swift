@@ -1,18 +1,14 @@
-import SwiftUI
+let quiz = [
+    "남도산": "ナムドサン",
+    "김덕영": "キムトギョン",
+    "사키야마 에리": "さきやまえり",
+    "abc" : "dd"
+]
 
-var timer : Timer? = nil
-var counter = 0
+print(Array(quiz.keys)[2])
+print(type(of: Array(quiz.keys)[2]))
 
+var str = String(Array(quiz.keys)[2])
 
-func prozessTimer() {
-    counter += 1
-    print("This is a second ", counter)
+print(quiz.index(forKey: str)!)
 
-}
-
-func viewDidLoad() {
-    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: <#T##(Timer) -> Void#>)
-
-}
-
-print(viewDidLoad())
