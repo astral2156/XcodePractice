@@ -121,7 +121,6 @@
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="pqq-kB-y3v" id="ZPk-BJ-r2c"/>
-                            <outlet property="delegate" destination="pqq-kB-y3v" id="Ue4-qg-O7T"/>
                         </connections>
                     </tableView>
                     <toolbarItems/>

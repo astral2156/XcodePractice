@@ -14,6 +14,8 @@ class ToDoListTableViewController: UITableViewController {
         super.viewDidLoad()
         print("viewDidLoad view show started")
         
+        tableView.delegate = self
+        tableView.dataSource = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,7 +32,7 @@ class ToDoListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        // #warning Incomplete implementation, return the number of sections'
         print("returned " + "\(Todo_List.dummyMemo.count)")
 
         return Todo_List.dummyMemo.count
@@ -40,6 +42,8 @@ class ToDoListTableViewController: UITableViewController {
 
     // for todo list table view
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        super.viewWillAppear(true)
+
         print("table view show started1")
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoListCell", for: indexPath)
