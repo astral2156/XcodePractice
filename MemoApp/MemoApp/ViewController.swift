@@ -13,11 +13,12 @@ class ViewController: UIViewController {
 //        super.viewDidLoad()
 //        // Do any additional setup after loading the view.
 //    }
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor.gray
+        self.table.backgroundColor = UIColor.gray
+
     }
 
 }
