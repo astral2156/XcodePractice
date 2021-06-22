@@ -19,9 +19,34 @@ class MemoListTbleViewController: UITableViewController {
         return f
     }()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // true? animated
+//        tableView.reloadData()
+//        print("is reloaded?")
+    }
+    
+    var token: NSObjectProtocol?
+    
+    deinit {
+        // delete observer to prevent memory leak
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInserted, object: nil, queue: OperationQueue.main){
+            [weak self] (noti) in self?.tableView.reloadData()
+            // should delete observer to block memory usage
+        }
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

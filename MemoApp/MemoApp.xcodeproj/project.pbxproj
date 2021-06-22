@@ -17,6 +17,7 @@
 		34AF6924267F208D00FD8219 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF6923267F208D00FD8219 /* model.swift */; };
 		34AF692626819E8E00FD8219 /* MemoListTbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF692526819E8E00FD8219 /* MemoListTbleViewController.swift */; };
 		34AF69282681D13800FD8219 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF69272681D13800FD8219 /* ComposeViewController.swift */; };
+		34AF692A2681DCC900FD8219 /* UIViewController+Allert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF69292681DCC900FD8219 /* UIViewController+Allert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		34AF6923267F208D00FD8219 /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		34AF692526819E8E00FD8219 /* MemoListTbleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTbleViewController.swift; sourceTree = "<group>"; };
 		34AF69272681D13800FD8219 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		34AF69292681DCC900FD8219 /* UIViewController+Allert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Allert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				34AF68FC267E3AFA00FD8219 /* Info.plist */,
 				34AF692526819E8E00FD8219 /* MemoListTbleViewController.swift */,
 				34AF69272681D13800FD8219 /* ComposeViewController.swift */,
+				34AF69292681DCC900FD8219 /* UIViewController+Allert.swift */,
 			);
 			path = MemoApp;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				34AF69282681D13800FD8219 /* ComposeViewController.swift in Sources */,
 				34AF68EF267E3AF900FD8219 /* AppDelegate.swift in Sources */,
+				34AF692A2681DCC900FD8219 /* UIViewController+Allert.swift in Sources */,
 				34AF6924267F208D00FD8219 /* model.swift in Sources */,
 				34AF692626819E8E00FD8219 /* MemoListTbleViewController.swift in Sources */,
 				34AF68F1267E3AF900FD8219 /* SceneDelegate.swift in Sources */,
