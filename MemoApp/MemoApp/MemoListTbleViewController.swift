@@ -37,6 +37,19 @@ class MemoListTbleViewController: UITableViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // sender 의 위치를 계산해야함 셀을 테이블뷰로 전송해야함.
+        if let cell = sender as?  UITableViewCell, let indexPath = tableView.indexPath(for: cell){
+            if let vc = segue.destination as? DetailViewController{
+                vc.memo = Memo.dummyList[indexPath.row] //이렇게해서 메모 속성에 접근한다
+                
+            }
+        }
+        
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
