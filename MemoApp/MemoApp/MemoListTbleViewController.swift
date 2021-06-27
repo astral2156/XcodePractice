@@ -23,6 +23,15 @@ class MemoListTbleViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // true? animated
+        // 뷰 컨트롤러가 화면에 표시되기 직전에 표시된다.
+        // 페치 메모 메소드 호출을 해줘야함
+        
+        DataManager.shared.fetchMemo()
+        // 메모 가져오고 배열이 채워짐
+        tableView.reloadData()
+        // 데이터 릴로드 해야함
+        
+        
 //        tableView.reloadData()
 //        print("is reloaded?")
     }
@@ -41,13 +50,12 @@ class MemoListTbleViewController: UITableViewController {
         // sender 의 위치를 계산해야함 셀을 테이블뷰로 전송해야함.
         if let cell = sender as?  UITableViewCell, let indexPath = tableView.indexPath(for: cell){
             if let vc = segue.destination as? DetailViewController{
-                vc.memo = Memo.dummyList[indexPath.row] //이렇게해서 메모 속성에 접근한다
+                vc.memo = DataManager.shared.memoList[indexPath.row]
+                // 이렇게해서 메모 속성에 접근한다
                 
             }
         }
-        
-        
-        
+    
     }
     
     override func viewDidLoad() {
@@ -58,42 +66,55 @@ class MemoListTbleViewController: UITableViewController {
             // should delete observer to block memory usage
         }
         
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Memo.dummyList.count
+        return DataManager.shared.memoList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let target = Memo.dummyList[indexPath.row]
+        let target = DataManager.shared.memoList[indexPath.row]
         cell.textLabel?.text = target.content
-//        let date = DateFormat(date: target.insertDate)
-        
-        cell.detailTextLabel?.text = formatter.string(from: target.insertDate)
+        cell.detailTextLabel?.text = formatter.string(for:target.insertDate)
         
 //        cell.detailTextLabel?.text = .string(from:date)
         // Configure the cell...
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // 테이블 뷰의 편집기능 활성화됨
+        return true
+    }
+    
+    //편집 스타일 지정해야함
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    //
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            
+            let target = DataManager.shared.memoList[indexPath.row]
+            DataManager.shared.deleteMemo(target)
+            // DB 에서 지우고, 테이블의 갯수가 일치하지 않기에 테이블에서도 삭제해준다
+            DataManager.shared.memoList.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
+        } else if editingStyle == .insert {
+            
+        }
+    }
+    
+    
 //    func DateFormat(date: Date ) -> DateFormatter {
 //        let f = DateFormatter()
 //        f.dateStyle = .long
@@ -103,50 +124,5 @@ class MemoListTbleViewController: UITableViewController {
 //        return f
 //    }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
