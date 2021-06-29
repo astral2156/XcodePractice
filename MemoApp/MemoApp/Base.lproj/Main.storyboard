@@ -84,33 +84,19 @@
             </objects>
             <point key="canvasLocation" x="-999" y="-21"/>
         </scene>
-        <!--Compose View Controller-->
+        <!--새 메모-->
         <scene sceneID="oby-sI-rhZ">
             <objects>
                 <viewController id="h29-gA-DEc" customClass="ComposeViewController" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PdG-OK-tqW">
+                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="NbA-44-eIy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="TEST" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FLN-AM-Hh9">
-                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="jRW-JL-w1d"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="FLN-AM-Hh9" firstAttribute="top" secondItem="jRW-JL-w1d" secondAttribute="top" id="79Z-a9-Wt0"/>
-                            <constraint firstItem="FLN-AM-Hh9" firstAttribute="trailing" secondItem="jRW-JL-w1d" secondAttribute="trailing" id="7JF-iJ-uqN"/>
-                            <constraint firstAttribute="bottom" secondItem="FLN-AM-Hh9" secondAttribute="bottom" id="H56-xq-iGG"/>
-                            <constraint firstItem="FLN-AM-Hh9" firstAttribute="leading" secondItem="jRW-JL-w1d" secondAttribute="leading" id="nh4-Me-1n8"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="79g-po-XPc">
-                        <nil key="title"/>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <navigationItem key="navigationItem" title="새 메모" id="79g-po-XPc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9BX-B4-RgP">
                             <connections>
                                 <action selector="cancelClicked:" destination="h29-gA-DEc" id="fDn-wg-Urb"/>
@@ -123,7 +109,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="memoTextView" destination="FLN-AM-Hh9" id="Xkb-UE-i1q"/>
+                        <outlet property="memoTextView" destination="NbA-44-eIy" id="Uva-vf-5mo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7V-ch-9t7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -252,7 +238,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3Ia-La-KjK"/>
+        <segue reference="Zl8-Ob-u0k"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

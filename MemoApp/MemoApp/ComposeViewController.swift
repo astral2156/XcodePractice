@@ -12,6 +12,7 @@ class ComposeViewController: UIViewController {
     
     @IBOutlet weak var memoTextView: UITextView!
     
+    
     var editTarget : Memo?
     // 보기화면에서 저장한 내용 여기다 저장
     var originalMemoContent : String?
@@ -34,17 +35,20 @@ class ComposeViewController: UIViewController {
     }
     
     
+    var num:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // 메모가 없다면 새 메모, 있다면 메모 편집창
         if let memo = editTarget{
             navigationItem.title = "Memo edit"
             memoTextView.text = memo.content
             originalMemoContent = memo.content
         } else {
-            navigationItem.title = "New memo"
+            //MARK: 이 부분이 새 메모 를 new memo로 바꿈 이 부분 수정
+            num = self.updateCharacterCount()
+            navigationItem.title = "New memo " + String(num)
             memoTextView.text = ""
             
         }
@@ -147,7 +151,16 @@ class ComposeViewController: UIViewController {
         // notification to close save
         dismiss(animated: true, completion: nil )
     }
+
     
+    func updateCharacterCount() -> Int{
+        let descriptionCount = self.memoTextView.text.count
+
+//        self.navigationItem.text = "\((0) + descriptionCount)/500"
+        print("updateCharacterCount")
+        print(descriptionCount)
+        return descriptionCount
+    }
 }
 
 extension ComposeViewController: UITextViewDelegate{
